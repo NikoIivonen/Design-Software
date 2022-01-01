@@ -16,6 +16,7 @@ base_url = ""
 obj_list = []
 
 
+
 def menu():
 
     choice = False
@@ -67,7 +68,7 @@ def save():
 
 def load():
 
-    global base_url, base_w, base_h, base_wp, base_hp
+    global base_url, base_w, base_h, base_wp, base_hp, test_img
 
     with open("decor_saves.txt", "r") as file:
 
@@ -97,7 +98,7 @@ def load():
                 url = parts[4]
                 angle = float(parts[5])
                 scale = float(parts[6])
-                img = pygame.image.load(url)
+                img = pygame.image.load(url).convert_alpha()
 
                 obj_list.append(Object(img, x, y, width, height, url, angle, scale))
 
@@ -439,9 +440,6 @@ start_x, start_y = -1, -1
 
 button_rect = pygame.Rect(630, 750, 100, 50)
 button_img = pygame.Rect(400, 750, 100, 50)
-
-
-"""APP LOOP"""
 
 while True:
 
